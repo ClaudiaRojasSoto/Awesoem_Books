@@ -1,3 +1,60 @@
 * {
-  margin: 0 10px;
+  margin: 5px 5px;
+}
+
+h1,
+h3 {
+  text-align: center;
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+
+.list-container {
+  font-family: 'Lato', sans-serif;
+  border: solid 2px black;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  align-self: flex-end;
+  box-shadow: 3px 3px;
+}
+
+.even {
+  background-color: grey;
+}
+
+.separation-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 15%;
+  border: solid 2px black;
+  margin-left: 42.5%;
+  margin-top: 36px;
+}
+
+.input-container {
+  margin-left: 35%;
+  margin-right: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  width: 100%;
+  border: solid 2px black;
+  padding: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
 }
