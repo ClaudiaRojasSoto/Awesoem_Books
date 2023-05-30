@@ -1,5 +1,6 @@
 * {
   margin: 5px 5px;
+  font-family: 'Lato', sans-serif;
 }
 
 h1,
@@ -10,7 +11,6 @@ h3 {
 }
 
 .list-container {
-  font-family: 'Lato', sans-serif;
   border: solid 2px black;
   list-style-type: none;
   display: flex;
