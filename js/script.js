@@ -34,21 +34,40 @@ class BookList {
 
     displayBooks() {
         this.bookList.innerHTML = "";
+        const list = document.createElement("ul");
+
         for (let i = 0; i < this.books.length; i += 1) {
-            const listItemTitle = document.createElement("p");
-            listItemTitle.textContent = this.books[i].title;
-            this.bookList.appendChild(listItemTitle);
-            const listItemAuthor = document.createElement("p");
-            listItemAuthor.textContent = this.books[i].author;
-            this.bookList.appendChild(listItemAuthor);
+            const book = this.books[i];
+
+            const listItem = document.createElement("li");
+
+            const booksInfo = document.createElement("span");
+            booksInfo.textContent = `${book.title} by ${book.author}`;
+
+            listItem.appendChild(booksInfo);
             const removeButoon = document.createElement("button");
             removeButoon.id = `remove-button-${this.books[i].id}`;
+
             removeButoon.textContent = "remove";
             removeButoon.setAttribute("data-index", i);
-            this.bookList.appendChild(removeButoon);
-            const line = document.createElement("hr");
-            this.bookList.appendChild(line);
+
+            listItem.appendChild(removeButoon);
+            list.appendChild(listItem);
+
+            //  "title" by "aruthor"
+            // const listItemTitle = document.createElement("p");
+            // listItemTitle.textContent = this.books[i].title;
+
+            // this.bookList.appendChild(listItemTitle);
+            // const listItemAuthor = document.createElement("p");
+
+            // listItemAuthor.textContent = this.books[i].author;
+            // this.bookList.appendChild(listItemAuthor);
+
+            // this.bookList.appendChild(removeButoon);
+            // const line = document.createElement("hr");
         }
+        this.bookList.appendChild(list);
         this.attachRemoveButtonListeners();
     }
 
