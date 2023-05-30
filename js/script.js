@@ -3,15 +3,15 @@ const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const inputButton = document.getElementById('add-button');
 
-const books = JSON.parse(localStorage.getItem('book')) || [];
+let books = JSON.parse(localStorage.getItem('book')) || [];
 
 function addBooks(event) {
   event.preventDefault();
   const title = inputTitle.value;
   const author = inputAuthor.value;
   if (title !== '' && author !== '') {
-    const book = { title, author };
-    books.unshift(book);
+    const book = { id: Date.now(), title, author };
+    books = [book, ...books];
     localStorage.setItem('book', JSON.stringify(books));
   }
   displayBooks();
@@ -30,7 +30,7 @@ function displayBooks() {
     listItemAuthor.textContent = books[i].author;
     bookList.appendChild(listItemAuthor);
     const removeButoon = document.createElement('button');
-    removeButoon.id = `remove-button-${i}`;
+    removeButton.id = `remove-button-${books[i].id}`;
     removeButoon.textContent = 'remove';
     removeButoon.setAttribute('data-index', i);
     bookList.appendChild(removeButoon);
