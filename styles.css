@@ -91,7 +91,7 @@ button {
 
 #contact-section {
   text-align: center;
-} 
+}
 
 #contact-section p,
 #contact-section ul {
@@ -110,4 +110,12 @@ button {
 
 .copyright {
   border: 2px solid black;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
 }
