@@ -1,57 +1,72 @@
-const bookList = document.getElementById('book-list');
-const inputTitle = document.getElementById('title');
-const inputAuthor = document.getElementById('author');
-const inputButton = document.getElementById('add-button');
+import Book from './book.js';
 
-const books = JSON.parse(localStorage.getItem('book')) || [];
+class BookList {
+  constructor() {
+    this.bookList = document.getElementById('book-list');
+    this.inputTitle = document.getElementById('title');
+    this.inputAuthor = document.getElementById('author');
+    this.inputButton = document.getElementById('add-button');
+    this.books = JSON.parse(localStorage.getItem('book')) || [];
 
-function addBooks(event) {
-  event.preventDefault();
-  const title = inputTitle.value;
-  const author = inputAuthor.value;
-  if (title !== '' && author !== '') {
-    const book = { title, author };
-    books.unshift(book);
-    localStorage.setItem('book', JSON.stringify(books));
-  }
-  displayBooks();
-  inputAuthor.value = '';
-  inputTitle.value = '';
-}
-inputButton.addEventListener('click', addBooks);
-
-function displayBooks() {
-  bookList.innerHTML = '';
-  for (let i = 0; i < books.length; i += 1) {
-    const listItemTitle = document.createElement('p');
-    listItemTitle.textContent = books[i].title;
-    bookList.appendChild(listItemTitle);
-    const listItemAuthor = document.createElement('p');
-    listItemAuthor.textContent = books[i].author;
-    bookList.appendChild(listItemAuthor);
-    const removeButoon = document.createElement('button');
-    removeButoon.id = `remove-button-${i}`;
-    removeButoon.textContent = 'remove';
-    removeButoon.setAttribute('data-index', i);
-    bookList.appendChild(removeButoon);
-    const line = document.createElement('hr');
-    bookList.appendChild(line);
+    this.inputButton.addEventListener('click', (event) => this.addBooks(event));
+    this.displayBooks();
   }
 
-  attachRemoveButtonListeners();
-}
-displayBooks();
+  addBooks(event) {
+    event.preventDefault();
+    const title = this.inputTitle.value;
+    const author = this.inputAuthor.value;
+    if (title !== '' && author !== '') {
+      const book = new Book(Date.now(), title, author);
+      this.books = [book, ...this.books];
+      localStorage.setItem('book', JSON.stringify(this.books));
+    }
+    this.displayBooks();
+    this.inputAuthor.value = '';
+    this.inputTitle.value = '';
+  }
 
-function attachRemoveButtonListeners() {
-  const removeButtons = document.querySelectorAll("button[id^='remove-button-']");
-  removeButtons.forEach((button) => {
-    button.addEventListener('click', removeBook);
-  });
+  displayBooks() {
+    this.bookList.innerHTML = '';
+    const list = document.createElement('ul');
+    list.classList.add('list-container');
+
+    for (let i = 0; i < this.books.length; i += 1) {
+      const book = this.books[i];
+
+      const listItem = document.createElement('li');
+
+      const booksInfo = document.createElement('span');
+      booksInfo.textContent = `${book.title} by ${book.author}`;
+      listItem.classList.add(i % 2 === 0 ? 'even' : 'odd');
+      listItem.appendChild(booksInfo);
+      const removeButoon = document.createElement('button');
+      removeButoon.id = `remove-button-${this.books[i].id}`;
+
+      removeButoon.textContent = 'remove';
+      removeButoon.setAttribute('data-index', i);
+
+      listItem.appendChild(removeButoon);
+      list.appendChild(listItem);
+    }
+    this.bookList.appendChild(list);
+    this.attachRemoveButtonListeners();
+  }
+
+  attachRemoveButtonListeners() {
+    const removeButtons = document.querySelectorAll("button[id^='remove-button-']");
+    removeButtons.forEach((button) => {
+      button.addEventListener('click', this.removeBook.bind(this));
+    });
+  }
+
+  removeBook(event) {
+    const bookIndex = event.target.dataset.index;
+    this.books.splice(bookIndex, 1);
+    localStorage.setItem('book', JSON.stringify(this.books));
+    this.displayBooks();
+  }
 }
 
-function removeBook(event) {
-  const bookIndex = event.target.dataset.index;
-  books.splice(bookIndex, 1);
-  localStorage.setItem('book', JSON.stringify(books));
-  displayBooks();
-}
+const bookList = new BookList();
+bookList.displayBooks();
