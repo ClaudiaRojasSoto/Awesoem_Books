@@ -75,7 +75,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Currently we don't have a live demo, stay tunned!
+> You can see a Demo here: [Demo](https://claudiarojassoto.github.io/Awesoem_Books/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
