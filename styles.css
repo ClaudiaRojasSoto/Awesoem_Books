@@ -1,6 +1,37 @@
 * {
   margin: 5px 5px;
   font-family: 'Lato', sans-serif;
+  text-decoration: none;
+}
+
+#nav-bar {
+  border: 2px solid black;
+  margin: 12px 0;
+  padding: 5px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-list {
+  display: flex;
+  margin-right: 12px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  list-style: none;
+}
+
+.line {
+  height: 30px;
+  width: 1px;
+  background-color: black;
+  border: solid 1px black;  
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
 }
 
 h1,
@@ -12,7 +43,6 @@ h3 {
 
 .list-container {
   border: solid 2px black;
-  list-style-type: none;
   display: flex;
   flex-direction: column;
 }
@@ -57,4 +87,27 @@ button {
 .button {
   display: flex;
   justify-content: flex-end;
+}
+
+#contact-section {
+  text-align: center;
+} 
+
+#contact-section p,
+#contact-section ul {
+  margin-bottom: 12px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-list li {
+  align-self: center;
+}
+
+.copyright {
+  border: 2px solid black;
 }

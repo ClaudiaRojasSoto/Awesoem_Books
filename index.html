@@ -11,14 +11,27 @@
 <title>Awesome Books</title>
 </head>
 <body>
-    <header>
-        <h1>All Awesome books</h1>
+    <header id="header">
+        <nav id="nav-bar">
+          <h1>Awesome books</h1>
+          <ul class="menu-list">
+              <li><a href="#" id="list">List</a></li>
+              <span class="line"></span>
+              <li><a href="#" id="new">Add New</a></li>
+              <span class="line"></span>
+              <li><a href="#contact-section" id="contact">Contact</a></li>
+          </ul>
+        </nav>
+        <span clas="date">hello</span>
     </header>
     <main>
-        <div id="book-list" >
+        <div>
+          <h2>All Awesome books</h2>
+          <div id="book-list" >
+            
+          </div>
         </div>
         <form action="">
-            <span class="separation-line" ></span>
             <h3>Add new book</h3>
             <div class="input-container">
             <div>
@@ -34,7 +47,20 @@
            </div>
         </div>
         </form>
+        <section id="contact-section">
+            <h2>Contact Information</h2>
+            <p>If you have any question or just want to say "Hello!"?<br>You can reach out to us</p>            
+            <ul class="contact-list">
+                <li><a href="https://github.com/ClaudiaRojasSoto">Claudia Rojas</a></li>
+                <li><a href="https://github.com/henask12">Henok Mekonnen</a></li>
+                <li><a href="https://github.com/HFG43">Hernán Güemes</a></li>
+            </ul>
+        </section>
+        <footer class="copyright">
+         <p>Copyright <a href="./MIT.md">MIT License</a></p>
+        </footer>
     </main>
+    
     <script type="module" src="./js/script.js"></script>
 </body>
 </html>

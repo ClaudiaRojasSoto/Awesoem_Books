@@ -6,8 +6,10 @@ class BookList {
     this.inputTitle = document.getElementById('title');
     this.inputAuthor = document.getElementById('author');
     this.inputButton = document.getElementById('add-button');
+    this.listButton = document.getElementById('list');
+    this.newButton = document.getElementById('new');
+    this.contactButton = document.getElementById('contact');
     this.books = JSON.parse(localStorage.getItem('book')) || [];
-
     this.inputButton.addEventListener('click', (event) => this.addBooks(event));
     this.displayBooks();
   }
