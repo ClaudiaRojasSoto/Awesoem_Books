@@ -38,10 +38,6 @@ class BookList {
     }
 
     showSection(sectionId) {
-        // event.preventDefault();
-        // this.bookList.classList.add("hidden");
-        // this.newButton.classList.add("hidden");
-        // this.listButton.classList.add("active");
         let sections = document.getElementsByClassName("list-section");
 
         for (let i = 0; i < sections.length; i++) {
@@ -52,26 +48,27 @@ class BookList {
                 content.classList.add("hidden");
             }
         }
-
-        //const sectionToShow = document.getElementById(sectionId);
-        //sectionToShow.classList.remove('hidden');
-        //sectionToShow.classList.add('active')
     }
 
     displayDate() {
         const dateElement = document.getElementById("date");
-        let today = new Date();
-        const options = {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            second: "numeric"
-        };
-        const format = today.toLocaleTimeString("en-US", options);
 
-        dateElement.textContent = format;
+        const updateTime = () => {
+            let today = new Date();
+            const options = {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric"
+            };
+            const format = today.toLocaleTimeString("en-US", options);
+
+            dateElement.textContent = format;
+        };
+        updateTime();
+        setInterval(updateTime, 1000);
     }
 
     displayBooks() {

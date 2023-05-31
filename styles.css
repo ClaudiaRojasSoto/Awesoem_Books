@@ -11,14 +11,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .menu-list {
   display: flex;
-  margin-right: 12px;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
   font-size: 1.3rem;
   font-weight: bold;
   list-style: none;
+}
+
+.menu-list li a {
+  color: #000;
+}
+
+.menu-list li a:hover {
+  color: rgb(80, 207, 253);
 }
 
 .line {
@@ -32,6 +42,8 @@
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
 }
 
 h1,
@@ -45,6 +57,9 @@ h3 {
   border: solid 2px black;
   display: flex;
   flex-direction: column;
+  margin-left: 1.5%;
+  margin-right:1.5%;
+
 }
 
 li {
@@ -118,4 +133,28 @@ button {
 
 .active {
   display: block;
+  
+}
+
+#date {
+  text-align: right;
+}
+
+#div-list h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.copyright {
+  position:absolute;
+  top: 90%;
+  width: 90%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+@media (min-width: 768px){
+  .copyright {
+    padding-left: 50px;
+  }
 }
